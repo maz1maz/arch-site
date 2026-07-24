@@ -478,10 +478,39 @@ input, textarea, select {
     background: var(--gray-100);
 }
 
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
 .about-intro-text {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 3rem;
+    text-align: right;
+}
+
+.about-intro-text .stats-grid {
+    margin-top: 2rem;
+}
+
+.about-intro-collage {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.about-intro-collage img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .about-intro-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-intro-text {
+        text-align: center;
+    }
 }
 
 .about-intro-image {

@@ -3,27 +3,27 @@
    Modern, Professional, RTL Design
    ============================================== */
 
-/* CSS Variables — palette drawn from facade materials: charcoal concrete, aged brass fittings, oxidized copper/verdigris */
+/* CSS Variables — green-tonal architectural palette on warm stone background, per reference brief */
 :root {
-    --primary: #211f1c;
-    --primary-light: #2f2c27;
-    --secondary: #a97c50;
-    --accent: #3f5951;
-    --accent-light: #5c7d72;
-    --dark: #131210;
-    --light: #fdfbf7;
-    --gray-100: #f6f3ee;
-    --gray-200: #e8e3d9;
-    --gray-300: #d6cfc0;
-    --gray-400: #b8ae9c;
-    --gray-500: #948a78;
-    --gray-600: #6e6558;
-    --gray-700: #4c463c;
-    --gray-800: #322e27;
-    --gray-900: #201d18;
+    --primary: #24402f;
+    --primary-light: #2f5039;
+    --secondary: #c2703f;
+    --accent: #5c7a5f;
+    --accent-light: #8aa688;
+    --dark: #16241c;
+    --light: #ffffff;
+    --gray-100: #f2f5f2;
+    --gray-200: #e3e9e3;
+    --gray-300: #cddbd0;
+    --gray-400: #a9bcae;
+    --gray-500: #7f9385;
+    --gray-600: #5f7264;
+    --gray-700: #454f47;
+    --gray-800: #2c332d;
+    --gray-900: #1b201c;
     --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     --gradient-accent: linear-gradient(135deg, var(--secondary) 0%, var(--accent-light) 100%);
-    --gradient-dark: linear-gradient(180deg, rgba(33, 31, 28, 0.95) 0%, rgba(19, 18, 16, 0.98) 100%);
+    --gradient-dark: linear-gradient(180deg, rgba(22, 36, 28, 0.95) 0%, rgba(16, 26, 20, 0.98) 100%);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -335,49 +335,65 @@ input, textarea, select {
    ============================================== */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: var(--primary);
+    background: var(--light);
     overflow: hidden;
 }
 
-/* Signature motif: a façade grid of windows, a handful lit in brass/verdigris —
-   the same rhythm a real elevation drawing has, standing in for a stock photo. */
-.hero::before,
+/* Subtle sketch-like elevation lines in the background — a quiet nod to
+   architectural drafting, kept faint so it never competes with the content. */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(90deg, rgba(36,64,47,0.05) 0 1px, transparent 1px 64px),
+        linear-gradient(180deg, transparent 60%, rgba(36,64,47,0.04) 100%);
+    pointer-events: none;
+}
+
 .page-header::before,
 .course-hero::before,
 .article-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-        repeating-linear-gradient(90deg, rgba(253,251,247,0.07) 0 1px, transparent 1px 88px),
-        repeating-linear-gradient(0deg, rgba(253,251,247,0.07) 0 1px, transparent 1px 88px),
-        radial-gradient(circle at 12% 22%, var(--secondary) 0 5px, transparent 6px),
-        radial-gradient(circle at 56% 14%, var(--accent-light) 0 5px, transparent 6px),
-        radial-gradient(circle at 33% 58%, var(--secondary) 0 5px, transparent 6px),
-        radial-gradient(circle at 78% 36%, var(--accent-light) 0 5px, transparent 6px),
-        radial-gradient(circle at 21% 84%, var(--secondary) 0 5px, transparent 6px),
-        radial-gradient(circle at 88% 74%, var(--accent-light) 0 5px, transparent 6px),
-        radial-gradient(circle at 66% 92%, var(--secondary) 0 5px, transparent 6px);
-    background-size: 88px 88px;
-    opacity: 0.9;
+    background-image: repeating-linear-gradient(90deg, rgba(36,64,47,0.06) 0 1px, transparent 1px 64px);
+    pointer-events: none;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(19,18,16,0.35) 0%, rgba(19,18,16,0.92) 75%);
+    display: none;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-image {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    text-align: center;
-    max-width: 800px;
-    padding: 2rem;
+    text-align: right;
+    max-width: 560px;
     animation: fadeInUp 1s ease;
 }
 
@@ -403,56 +419,27 @@ input, textarea, select {
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: 900;
-    color: var(--light);
+    color: var(--primary);
     margin-bottom: 1.5rem;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--gray-300);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--gray-700);
     margin-bottom: 2.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center;
 }
 
 .hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--gray-400);
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
-
-.hero-scroll svg {
-    transform: rotate(180deg);
+    display: none;
 }
 
 /* ==============================================
@@ -463,11 +450,10 @@ input, textarea, select {
     background: var(--gray-100);
 }
 
-.about-intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: center;
+.about-intro-text {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3rem;
 }
 
 .about-intro-image {
@@ -993,10 +979,19 @@ input, textarea, select {
 }
 
 .why-grid {
+    display: block;
+}
+
+.why-features {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .why-features {
+        grid-template-columns: 1fr;
+    }
 }
 
 .why-content h2 {
@@ -1010,12 +1005,6 @@ input, textarea, select {
     font-size: 1.125rem;
     color: var(--gray-600);
     margin-bottom: 2rem;
-}
-
-.why-features {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 }
 
 .why-feature {
@@ -1256,11 +1245,18 @@ input, textarea, select {
     background: var(--light);
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: start;
+.about-content-centered {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content-centered .about-skills {
+    justify-content: center;
+}
+
+.about-content-centered .about-cta {
+    justify-content: center;
 }
 
 .about-images {
@@ -1745,6 +1741,33 @@ input, textarea, select {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 8rem 0 3rem;
+    }
+
+    .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -1933,8 +1956,8 @@ input, textarea, select {
 .page-header {
     position: relative;
     overflow: hidden;
-    background: var(--primary);
-    color: var(--light);
+    background: var(--gray-100);
+    color: var(--primary);
     padding: 9rem 0 4rem;
     text-align: center;
 }
@@ -1947,7 +1970,7 @@ input, textarea, select {
     margin: 0.75rem 0;
 }
 .page-header p {
-    color: var(--gray-300);
+    color: var(--gray-700);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -2084,8 +2107,8 @@ input, textarea, select {
 .course-hero {
     position: relative;
     overflow: hidden;
-    background: var(--primary);
-    color: var(--light);
+    background: var(--gray-100);
+    color: var(--primary);
     padding: 9rem 0 4rem;
     text-align: center;
 }
@@ -2107,7 +2130,7 @@ input, textarea, select {
     margin-bottom: 0.75rem;
 }
 .course-hero p {
-    color: var(--gray-300);
+    color: var(--gray-700);
     max-width: 650px;
     margin: 0 auto 1.5rem;
 }
@@ -2167,8 +2190,8 @@ input, textarea, select {
 .article-hero {
     position: relative;
     overflow: hidden;
-    background: var(--primary);
-    color: var(--light);
+    background: var(--gray-100);
+    color: var(--primary);
     padding: 9rem 0 3rem;
     text-align: center;
 }
@@ -2225,4 +2248,24 @@ input, textarea, select {
     .case-study-gallery {
         grid-template-columns: 1fr;
     }
+}
+
+/* Photo-free card headers (homepage keeps a single hero photo; cards use icon blocks) */
+.project-image.icon-fill,
+.article-image.icon-fill {
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+}
+
+.project-image.icon-fill svg,
+.article-image.icon-fill svg {
+    opacity: 0.85;
+}
+
+.project-card:hover .project-image.icon-fill,
+.article-card:hover .article-image.icon-fill {
+    background: var(--gradient-accent);
 }

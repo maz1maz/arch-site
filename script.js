@@ -1,5 +1,5 @@
 /* ==============================================
-   Architecture Website - Mohammad Seyfikhani
+   Architecture Website
    Interactive JavaScript
    ============================================== */
 

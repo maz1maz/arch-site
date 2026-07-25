@@ -338,9 +338,9 @@ input, textarea, select {
     min-height: 88vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     background: var(--light);
     overflow: hidden;
+    padding: 7rem 0 3rem;
 }
 
 .page-header::before,
@@ -353,73 +353,28 @@ input, textarea, select {
     pointer-events: none;
 }
 
-/* Full-width architectural elevation sketch standing in for a stock photo —
-   drawn, not photographed, so it's specific to the subject: a façade study. */
-.hero-sketch-wrap {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
 }
 
-.facade-sketch {
+.hero-image {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.hero-image img {
     width: 100%;
-    height: 100%;
-}
-
-.facade-sketch .sketch-line-strong {
-    stroke: var(--primary);
-    stroke-width: 2;
-    opacity: 0.55;
-}
-
-.facade-sketch .sketch-line-thin {
-    stroke: var(--primary);
-    stroke-width: 1;
-    opacity: 0.35;
-}
-
-.facade-sketch .sketch-hatch {
-    color: var(--primary);
-    opacity: 0.3;
-}
-
-.facade-sketch .win {
-    stroke: var(--primary);
-    stroke-width: 1.25;
-    fill: none;
-    opacity: 0.4;
-}
-
-.facade-sketch .lit {
-    stroke: var(--secondary);
-    stroke-width: 1.25;
-    fill: var(--secondary);
-    opacity: 0.35;
-}
-
-.facade-sketch .sketch-compass-n {
-    fill: var(--primary);
-    opacity: 0.5;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.85) 100%);
-    z-index: 1;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2;
+    height: auto;
+    display: block;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    text-align: center;
-    max-width: 780px;
-    margin: 0 auto;
+    text-align: right;
     animation: fadeInUp 1s ease;
 }
 
@@ -455,14 +410,14 @@ input, textarea, select {
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--gray-700);
-    margin: 0 auto 2.5rem;
-    max-width: 640px;
+    margin: 0 0 2.5rem;
+    max-width: 100%;
 }
 
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
 }
 
@@ -478,39 +433,18 @@ input, textarea, select {
     background: var(--gray-100);
 }
 
-.about-intro-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 3.5rem;
-    align-items: center;
-}
-
 .about-intro-text {
     text-align: right;
 }
 
+.about-intro-text-centered {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
 .about-intro-text .stats-grid {
     margin-top: 2rem;
-}
-
-.about-intro-collage {
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-}
-
-.about-intro-collage img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-@media (max-width: 900px) {
-    .about-intro-grid {
-        grid-template-columns: 1fr;
-    }
-    .about-intro-text {
-        text-align: center;
-    }
 }
 
 .about-intro-image {
@@ -1803,8 +1737,18 @@ input, textarea, select {
         padding: 8rem 0 3rem;
     }
 
+    .hero-split {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
     .hero-content {
         max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
     }
 
     .nav-links {
@@ -2307,4 +2251,18 @@ input, textarea, select {
 .project-card:hover .project-image.icon-fill,
 .article-card:hover .article-image.icon-fill {
     background: var(--gradient-accent);
+}
+
+/* Services page intro image */
+.services-intro-image {
+    padding: 3rem 0 0;
+    text-align: center;
+}
+
+.services-intro-image img {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
 }
